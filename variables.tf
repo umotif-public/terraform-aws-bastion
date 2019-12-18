@@ -57,9 +57,9 @@ variable "ami_id" {
 }
 
 variable "hosted_zone_id" {
-  type           = string
-  description    = "Hosted zone id where A record will be added for bastion host/s."
-  hosted_zone_id = ""
+  type        = string
+  description = "Hosted zone id where A record will be added for bastion host/s."
+  default     = ""
 }
 
 variable "desired_capacity" {

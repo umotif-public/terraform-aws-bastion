@@ -41,3 +41,7 @@ module "bastion" {
     Project = "Test"
   }
 }
+
+output "sg_id" {
+  value = module.bastion.security_group_id
+}
