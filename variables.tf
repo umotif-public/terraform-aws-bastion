@@ -90,3 +90,19 @@ variable "ingress_cidr_blocks" {
   description = "List of CIDR ranges to allow ssh access at security group level. Defaults to 0.0.0.0/0"
   default     = ["0.0.0.0/0"]
 }
+
+variable "egress_cidr_blocks" {
+  type        = list(string)
+  description = "List of CIDR ranges to allow outbound traffic at security group level. Defaults to 0.0.0.0/0"
+  default     = ["0.0.0.0/0"]
+}
+
+variable "enable_asg_scale_down" {
+  type    = bool
+  default = false
+}
+
+variable "enable_asg_scale_up" {
+  type    = bool
+  default = false
+}

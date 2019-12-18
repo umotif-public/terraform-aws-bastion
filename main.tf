@@ -31,7 +31,7 @@ resource "aws_autoscaling_group" "bastion" {
   desired_capacity    = var.desired_capacity
   max_size            = var.max_size
   min_size            = var.min_size
-  vpc_zone_identifier = var.public_subnets #flatten([module.vpc.public_subnets])
+  vpc_zone_identifier = var.public_subnets
 
   force_delete         = true
   termination_policies = ["OldestInstance"]
@@ -84,6 +84,8 @@ resource "aws_autoscaling_group" "bastion" {
 }
 
 resource "aws_autoscaling_schedule" "asg_scale_down" {
+  count = var.enable_asg_scale_down ? 1 : 0
+
   scheduled_action_name  = "bastion_asg_scale_down"
   autoscaling_group_name = aws_autoscaling_group.bastion.name
   min_size               = 0
@@ -95,6 +97,8 @@ resource "aws_autoscaling_schedule" "asg_scale_down" {
 }
 
 resource "aws_autoscaling_schedule" "asg_scale_up" {
+  count = var.enable_asg_scale_up ? 1 : 0
+
   scheduled_action_name  = "bastion_asg_scale_up"
   autoscaling_group_name = aws_autoscaling_group.bastion.name
   min_size               = 1
@@ -121,7 +125,7 @@ resource "aws_security_group" "bastion" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.egress_cidr_blocks
   }
 
   tags = merge(

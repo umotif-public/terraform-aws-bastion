@@ -37,6 +37,10 @@ module "bastion" {
 
   hosted_zone_id = "Z1IY32BQNIYX17"
   ssh_key_name   = "marcin-test"
+
+  enable_asg_scale_down = true
+  enable_asg_scale_up   = true
+
   tags = {
     Project = "Test"
   }
