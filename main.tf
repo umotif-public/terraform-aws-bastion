@@ -114,7 +114,7 @@ resource "aws_security_group" "bastion" {
     from_port   = var.ssh_port
     to_port     = var.ssh_port
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.ingress_cidr_blocks
   }
 
   egress {
@@ -160,7 +160,8 @@ EOF
 }
 
 resource "aws_iam_policy" "bastion" {
-  name = "${var.name_prefix}-bastion-ec2-asg-policy"
+
+  name = "${var.name_prefix}-bastion-policy"
 
   policy = <<EOF
 {

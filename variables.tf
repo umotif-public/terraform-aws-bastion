@@ -57,25 +57,36 @@ variable "ami_id" {
 }
 
 variable "hosted_zone_id" {
-  type = string
+  type           = string
+  description    = "Hosted zone id where A record will be added for bastion host/s."
+  hosted_zone_id = ""
 }
 
 variable "desired_capacity" {
-  type    = number
-  default = 1
+  type        = number
+  description = "Auto Scalling Group value for desired capacity of bastion hosts."
+  default     = 1
 }
 
 variable "max_size" {
-  type    = number
-  default = 2
+  type        = number
+  description = "Auto Scalling Group value for maximum capacity of bastion hosts."
+  default     = 2
 }
 
 variable "min_size" {
-  type    = number
-  default = 1
+  type        = number
+  description = "Auto Scalling Group value for minimum capacity of bastion hosts."
+  default     = 1
 }
 
 variable "ssh_port" {
   description = "SSH port used to access a bastion host."
   default     = 22
+}
+
+variable "ingress_cidr_blocks" {
+  type        = list(string)
+  description = "List of CIDR ranges to allow ssh access at security group level. Defaults to 0.0.0.0/0"
+  default     = ["0.0.0.0/0"]
 }
