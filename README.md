@@ -41,7 +41,7 @@ Module is to be used with Terraform > 0.12.
 
 ## Examples
 
-* [Bastion Host](https://github.com/umotif-public/terraform-aws-alb/tree/master/examples/alb)
+* [Bastion Host](https://github.com/umotif-public/terraform-aws-bsation/tree/master/examples/core)
 
 ## Authors
 
