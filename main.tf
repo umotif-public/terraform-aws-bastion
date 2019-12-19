@@ -164,6 +164,7 @@ EOF
 }
 
 resource "aws_iam_policy" "bastion" {
+  count = var.hosted_zone_id != "" ? 1 : 0
 
   name = "${var.name_prefix}-bastion-policy"
 
@@ -198,6 +199,8 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "bastion" {
+  count = var.hosted_zone_id != "" ? 1 : 0
+
   role       = aws_iam_role.bastion.name
-  policy_arn = aws_iam_policy.bastion.arn
+  policy_arn = aws_iam_policy.bastion[0].arn
 }
