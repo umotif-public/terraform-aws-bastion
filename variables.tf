@@ -71,7 +71,7 @@ variable "desired_capacity" {
 variable "max_size" {
   type        = number
   description = "Auto Scalling Group value for maximum capacity of bastion hosts."
-  default     = 2
+  default     = 1
 }
 
 variable "min_size" {
@@ -105,4 +105,59 @@ variable "enable_asg_scale_down" {
 variable "enable_asg_scale_up" {
   type    = bool
   default = false
+}
+
+variable "asg_scale_down_recurrence" {
+  type        = string
+  description = "The time when recurring future actions will start. Start time is specified by the user following the Unix cron syntax format. Scale down action."
+  default     = "0 18 * * MON-FRI"
+}
+
+variable "asg_scale_up_recurrence" {
+  type        = string
+  description = "The time when recurring future actions will start. Start time is specified by the user following the Unix cron syntax format. Scale up action."
+  default     = "0 9 * * MON-FRI"
+}
+
+variable "asg_scale_down_max_size" {
+  type        = number
+  description = "Auto Scalling Group value for maximum capacity of bastion hosts. Scale down action."
+  default     = 0
+}
+
+variable "asg_scale_down_min_size" {
+  type        = number
+  description = "Auto Scalling Group value for minimum capacity of bastion hosts. Scale down action."
+  default     = 0
+}
+
+variable "asg_scale_down_desired_capacity" {
+  type        = number
+  description = "Auto Scalling Group value for desired capacity of bastion hosts. Scale down action."
+  default     = 0
+}
+
+variable "asg_scale_up_max_size" {
+  type        = number
+  description = "Auto Scalling Group value for maximum capacity of bastion hosts. Scale up action."
+  default     = 1
+}
+
+variable "asg_scale_up_min_size" {
+  type        = number
+  description = "Auto Scalling Group value for minimum capacity of bastion hosts. Scale up action."
+  default     = 1
+}
+
+variable "asg_scale_up_desired_capacity" {
+  type        = number
+  description = "Auto Scalling Group value for desired capacity of bastion hosts. Scale up action."
+  default     = 1
+}
+
+
+variable "termination_policies" {
+  type        = list(string)
+  description = "A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, OldestLaunchTemplate, AllocationStrategy."
+  default     = ["OldestInstance"]
 }

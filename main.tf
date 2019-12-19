@@ -34,7 +34,7 @@ resource "aws_autoscaling_group" "bastion" {
   vpc_zone_identifier = var.public_subnets
 
   force_delete         = true
-  termination_policies = ["OldestInstance"]
+  termination_policies = var.termination_policies
 
   mixed_instances_policy {
     instances_distribution {
@@ -88,10 +88,10 @@ resource "aws_autoscaling_schedule" "asg_scale_down" {
 
   scheduled_action_name  = "bastion_asg_scale_down"
   autoscaling_group_name = aws_autoscaling_group.bastion.name
-  min_size               = 0
-  max_size               = 0
-  desired_capacity       = 0
-  recurrence             = "0 18 * * MON-FRI"
+  min_size               = var.asg_scale_down_min_size
+  max_size               = var.asg_scale_down_max_size
+  desired_capacity       = var.asg_scale_down_desired_capacity
+  recurrence             = var.asg_scale_down_recurrence
 
   depends_on = [aws_autoscaling_group.bastion]
 }
@@ -101,10 +101,10 @@ resource "aws_autoscaling_schedule" "asg_scale_up" {
 
   scheduled_action_name  = "bastion_asg_scale_up"
   autoscaling_group_name = aws_autoscaling_group.bastion.name
-  min_size               = 1
-  max_size               = 1
-  desired_capacity       = 1
-  recurrence             = "0 9 * * MON-FRI"
+  min_size               = var.asg_scale_up_min_size
+  max_size               = var.asg_scale_up_max_size
+  desired_capacity       = var.asg_scale_up_desired_capacity
+  recurrence             = var.asg_scale_up_recurrence
 
   depends_on = [aws_autoscaling_group.bastion]
 }
