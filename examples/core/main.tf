@@ -41,6 +41,8 @@ module "bastion" {
   enable_asg_scale_down = true
   enable_asg_scale_up   = true
 
+  userdata_file_content = templatefile("./custom-userdata.sh", {}) # if you want to use default one, simply remove this line
+
   tags = {
     Project = "Test"
   }

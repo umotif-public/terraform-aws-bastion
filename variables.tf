@@ -161,3 +161,8 @@ variable "termination_policies" {
   description = "A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, OldestLaunchTemplate, AllocationStrategy."
   default     = ["OldestInstance"]
 }
+
+variable "userdata_file_content" {
+  type    = string
+  default = ""
+}
