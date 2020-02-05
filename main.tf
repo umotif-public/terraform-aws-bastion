@@ -183,12 +183,12 @@ resource "aws_iam_policy" "bastion" {
       ],
       "Resource": "*"
     },
-    { 
+    {
       "Effect":"Allow",
       "Action": [
         "route53:ChangeResourceRecordSets",
         "route53:GetHostedZone"
-      ],  
+      ],
       "Resource": [
         "arn:aws:route53:::hostedzone/${var.hosted_zone_id}"
       ]

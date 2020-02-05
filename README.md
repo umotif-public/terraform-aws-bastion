@@ -16,7 +16,7 @@ Terraform 0.12. Pin module version to `~> v1.0`. Submit pull-requests to `master
 module "bastion" {
   source = "umotif-public/bastion/aws"
   version = "~> 1.0"
-  
+
   name_prefix = "core-example"
 
   vpc_id         = "vpc-abasdasd132"
@@ -52,10 +52,6 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| name\_prefix | A prefix used for naming resources. | string | n/a | yes |
-| public\_subnets | Classless Inter-Domain Routing ranges for public subnets. | list(string) | n/a | yes |
-| ssh\_key\_name | SSH key used to connect to the bastion host | string | n/a | yes |
-| vpc\_id | VPC ID where bastion hosts and security groups will be created. | string | n/a | yes |
 | ami\_id | AMI ID to be used for bastion host. If not provided, it will default to latest amazon linux 2 image. | string | `""` | no |
 | asg\_scale\_down\_desired\_capacity | Auto Scalling Group value for desired capacity of bastion hosts. Scale down action. | number | `"0"` | no |
 | asg\_scale\_down\_max\_size | Auto Scalling Group value for maximum capacity of bastion hosts. Scale down action. | number | `"0"` | no |
@@ -75,12 +71,16 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | ingress\_cidr\_blocks | List of CIDR ranges to allow ssh access at security group level. Defaults to 0.0.0.0/0 | list(string) | `[ "0.0.0.0/0" ]` | no |
 | max\_size | Auto Scalling Group value for maximum capacity of bastion hosts. | number | `"1"` | no |
 | min\_size | Auto Scalling Group value for minimum capacity of bastion hosts. | number | `"1"` | no |
+| name\_prefix | A prefix used for naming resources. | string | n/a | yes |
 | private\_subnets | Classless Inter-Domain Routing ranges for private subnets. | list(string) | `[]` | no |
+| public\_subnets | Classless Inter-Domain Routing ranges for public subnets. | list(string) | n/a | yes |
 | region | AWS region in which resources will get deployed. Defaults to Ireland. | string | `"eu-west-1"` | no |
+| ssh\_key\_name | SSH key used to connect to the bastion host | string | n/a | yes |
 | ssh\_port | SSH port used to access a bastion host. | string | `"22"` | no |
 | tags | Default tags attached to all resources. | map(string) | `{ "ServiceType": "ceng-eks" }` | no |
 | termination\_policies | A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, OldestLaunchTemplate, AllocationStrategy. | list(string) | `[ "OldestInstance" ]` | no |
 | userdata\_file\_content |  | string | `""` | no |
+| vpc\_id | VPC ID where bastion hosts and security groups will be created. | string | n/a | yes |
 
 ## Outputs
 
@@ -99,3 +99,17 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 ## License
 
 See LICENSE for full details.
+
+## Pre-commit hooks
+
+### Install dependencies
+
+* [`pre-commit`](https://pre-commit.com/#install)
+* [`terraform-docs`](https://github.com/segmentio/terraform-docs) required for `terraform_docs` hooks.
+* [`TFLint`](https://github.com/terraform-linters/tflint) required for `terraform_tflint` hook.
+
+#### MacOS
+
+```bash
+brew install pre-commit terraform-docs tflint
+```
