@@ -119,6 +119,7 @@ resource "aws_security_group" "bastion" {
     to_port     = var.ssh_port
     protocol    = "tcp"
     cidr_blocks = var.ingress_cidr_blocks
+    ipv6_cidr_blocks = var.ingress_ipv6_cidr_blocks
   }
 
   egress {
