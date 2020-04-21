@@ -15,7 +15,7 @@ Terraform 0.12. Pin module version to `~> v1.0`. Submit pull-requests to `master
 ```hcl
 module "bastion" {
   source = "umotif-public/bastion/aws"
-  version = "~> 1.0"
+  version = "~> 1.1.0"
 
   name_prefix = "core-example"
 
