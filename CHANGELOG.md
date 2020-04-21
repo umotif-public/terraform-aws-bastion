@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- Add versions.tf file
+- update README and add Changelog
 - Add egress for IPv6 + formatting
 
 
