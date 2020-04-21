@@ -103,6 +103,12 @@ variable "egress_cidr_blocks" {
   default     = ["0.0.0.0/0"]
 }
 
+variable "egress_ipv6_cidr_blocks" {
+  type        = list(string)
+  description = "List of IPv6 CIDR ranges to allow outbound traffic at security group level. Defaults to ::/0"
+  default     = ["::/0"]
+}
+
 variable "enable_asg_scale_down" {
   type    = bool
   default = false
@@ -160,7 +166,6 @@ variable "asg_scale_up_desired_capacity" {
   description = "Auto Scalling Group value for desired capacity of bastion hosts. Scale up action."
   default     = 1
 }
-
 
 variable "termination_policies" {
   type        = list(string)

@@ -115,18 +115,19 @@ resource "aws_security_group" "bastion" {
   vpc_id      = var.vpc_id
 
   ingress {
-    from_port   = var.ssh_port
-    to_port     = var.ssh_port
-    protocol    = "tcp"
-    cidr_blocks = var.ingress_cidr_blocks
+    from_port        = var.ssh_port
+    to_port          = var.ssh_port
+    protocol         = "tcp"
+    cidr_blocks      = var.ingress_cidr_blocks
     ipv6_cidr_blocks = var.ingress_ipv6_cidr_blocks
   }
 
   egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = var.egress_cidr_blocks
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = var.egress_cidr_blocks
+    ipv6_cidr_blocks = var.egress_ipv6_cidr_blocks
   }
 
   tags = merge(
