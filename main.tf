@@ -136,6 +136,12 @@ resource "aws_security_group" "bastion" {
     },
     var.tags
   )
+
+  revoke_rules_on_delete = true
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_iam_instance_profile" "bastion" {
