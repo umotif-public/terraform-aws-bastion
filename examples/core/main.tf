@@ -36,10 +36,14 @@ module "bastion" {
   public_subnets = flatten([module.vpc.public_subnets])
 
   hosted_zone_id = "Z1IY32BQNIYX17"
-  ssh_key_name   = "marcin-test"
+  ssh_key_name   = "eks-test"
 
   enable_asg_scale_down = true
   enable_asg_scale_up   = true
+
+  delete_on_termination = true
+  volume_size           = 10
+  encrypted             = true
 
   userdata_file_content = templatefile("./custom-userdata.sh", {}) # if you want to use default one, simply remove this line
 

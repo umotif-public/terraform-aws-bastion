@@ -174,6 +174,37 @@ variable "termination_policies" {
 }
 
 variable "userdata_file_content" {
-  type    = string
-  default = ""
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "device_name" {
+  type        = string
+  description = "The name of the device to mount."
+  default     = "/dev/xvda"
+}
+
+variable "delete_on_termination" {
+  type        = bool
+  description = "Whether the volume should be destroyed on instance termination."
+  default     = true
+}
+
+variable "volume_size" {
+  type        = number
+  description = "The size of the volume in gigabytes."
+  default     = 20
+}
+
+variable "encrypted" {
+  type        = bool
+  description = "Enables EBS encryption on the volume."
+  default     = true
+}
+
+variable "volume_type" {
+  type        = string
+  description = "The type of volume. Can be `standard`, `gp2`, or `io1`."
+  default     = "gp2"
 }
