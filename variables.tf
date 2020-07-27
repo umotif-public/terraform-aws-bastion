@@ -175,7 +175,7 @@ variable "termination_policies" {
 
 variable "userdata_file_content" {
   type        = string
-  description = ""
+  description = "The user data to provide when launching the instance."
   default     = ""
 }
 

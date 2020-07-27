@@ -97,7 +97,7 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | ssh\_port | SSH port used to access a bastion host. | `number` | `22` | no |
 | tags | Default tags attached to all resources. | `map(string)` | <pre>{<br>  "ServiceType": "ceng-eks"<br>}</pre> | no |
 | termination\_policies | A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, OldestLaunchTemplate, AllocationStrategy. | `list(string)` | <pre>[<br>  "OldestInstance"<br>]</pre> | no |
-| userdata\_file\_content | n/a | `string` | `""` | no |
+| userdata\_file\_content | The user data to provide when launching the instance. | `string` | `""` | no |
 | volume\_size | The size of the volume in gigabytes. | `number` | `20` | no |
 | volume\_type | The type of volume. Can be `standard`, `gp2`, or `io1`. | `string` | `"gp2"` | no |
 | vpc\_id | VPC ID where bastion hosts and security groups will be created. | `string` | n/a | yes |
