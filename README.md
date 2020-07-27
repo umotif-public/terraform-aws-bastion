@@ -15,7 +15,7 @@ Terraform 0.12. Pin module version to `~> v1.0`. Submit pull-requests to `master
 ```hcl
 module "bastion" {
   source = "umotif-public/bastion/aws"
-  version = "~> 1.3.0"
+  version = "~> 1.4.0"
 
   name_prefix = "core-example"
 
@@ -23,7 +23,7 @@ module "bastion" {
   subnets        = ["subnet-abasdasd132123", "subnet-abasdasd132123132"]
 
   hosted_zone_id = "Z1IY32BQNIYX16"
-  ssh_key_name   = "marcin-test"
+  ssh_key_name   = "test"
 
   tags = {
     Project = "Test"
@@ -76,11 +76,14 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | asg\_scale\_up\_recurrence | The time when recurring future actions will start. Start time is specified by the user following the Unix cron syntax format. Scale up action. | `string` | `"0 9 * * MON-FRI"` | no |
 | availability\_zones | Availability zones for the default Ireland region. | `list(string)` | <pre>[<br>  "eu-west-1a",<br>  "eu-west-1b",<br>  "eu-west-1c"<br>]</pre> | no |
 | bastion\_instance\_types | Bastion instance types used for spot instances. | `list(string)` | <pre>[<br>  "t3.nano",<br>  "t3.micro",<br>  "t3.small",<br>  "t2.nano",<br>  "t2.micro",<br>  "t2.small"<br>]</pre> | no |
+| delete\_on\_termination | Whether the volume should be destroyed on instance termination. | `bool` | `true` | no |
 | desired\_capacity | Auto Scalling Group value for desired capacity of bastion hosts. | `number` | `1` | no |
+| device\_name | The name of the device to mount. | `string` | `"/dev/xvda"` | no |
 | egress\_cidr\_blocks | List of CIDR ranges to allow outbound traffic at security group level. Defaults to 0.0.0.0/0 | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | egress\_ipv6\_cidr\_blocks | List of IPv6 CIDR ranges to allow outbound traffic at security group level. Defaults to ::/0 | `list(string)` | <pre>[<br>  "::/0"<br>]</pre> | no |
 | enable\_asg\_scale\_down | n/a | `bool` | `false` | no |
 | enable\_asg\_scale\_up | n/a | `bool` | `false` | no |
+| encrypted | Enables EBS encryption on the volume. | `bool` | `true` | no |
 | hosted\_zone\_id | Hosted zone id where A record will be added for bastion host/s. | `string` | `""` | no |
 | ingress\_cidr\_blocks | List of CIDR ranges to allow ssh access at security group level. Defaults to 0.0.0.0/0 | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | ingress\_ipv6\_cidr\_blocks | List of IPv6 CIDR ranges to allow ssh access at security group level. Defaults to ::/0 | `list(string)` | <pre>[<br>  "::/0"<br>]</pre> | no |
@@ -94,7 +97,9 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | ssh\_port | SSH port used to access a bastion host. | `number` | `22` | no |
 | tags | Default tags attached to all resources. | `map(string)` | <pre>{<br>  "ServiceType": "ceng-eks"<br>}</pre> | no |
 | termination\_policies | A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, OldestLaunchTemplate, AllocationStrategy. | `list(string)` | <pre>[<br>  "OldestInstance"<br>]</pre> | no |
-| userdata\_file\_content | n/a | `string` | `""` | no |
+| userdata\_file\_content | The user data to provide when launching the instance. | `string` | `""` | no |
+| volume\_size | The size of the volume in gigabytes. | `number` | `20` | no |
+| volume\_type | The type of volume. Can be `standard`, `gp2`, or `io1`. | `string` | `"gp2"` | no |
 | vpc\_id | VPC ID where bastion hosts and security groups will be created. | `string` | n/a | yes |
 
 ## Outputs
