@@ -5,8 +5,19 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
-- update docs
-- Update security group configuration with lifecycle and revoke
+- Update module versions to support v3 provider
+
+
+<a name="1.4.0"></a>
+## [1.4.0] - 2020-07-27
+
+- Feature/volume support ([#5](https://github.com/umotif-public/terraform-aws-bastion/issues/5))
+
+
+<a name="1.3.0"></a>
+## [1.3.0] - 2020-05-21
+
+- Update security group configuration with lifecycle and revoke ([#4](https://github.com/umotif-public/terraform-aws-bastion/issues/4))
 
 
 <a name="1.2.0"></a>
@@ -53,7 +64,9 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.2.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.4.0...HEAD
+[1.4.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.3.0...1.4.0
+[1.3.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.0.3...1.1.0
 [1.0.3]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.0.2...1.0.3
