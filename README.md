@@ -1,3 +1,5 @@
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/umotif-public/terraform-aws-bastion?style=social)
+
 # terraform-aws-bastion
 
 Terraform module to create Bastion Host in AWS VPC running as Spot Instance/s
