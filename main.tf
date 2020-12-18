@@ -50,7 +50,7 @@ resource "aws_autoscaling_group" "bastion" {
   mixed_instances_policy {
     instances_distribution {
       on_demand_percentage_above_base_capacity = 0
-      on_demand_base_capacity                  = 0
+      on_demand_base_capacity                  = var.on_demand_base_capacity
     }
 
     launch_template {
