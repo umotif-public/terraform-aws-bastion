@@ -80,6 +80,7 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | bastion\_instance\_types | Bastion instance types used for spot instances. | `list(string)` | <pre>[<br>  "t3.nano",<br>  "t3.micro",<br>  "t3.small",<br>  "t2.nano",<br>  "t2.micro",<br>  "t2.small"<br>]</pre> | no |
 | delete\_on\_termination | Whether the volume should be destroyed on instance termination. | `bool` | `true` | no |
 | desired\_capacity | Auto Scalling Group value for desired capacity of bastion hosts. | `number` | `1` | no |
+| on\_demand\_base\_capacity | Auto Scalling Group value for desired capacity for instance lifecycle type on-demand of bastion hosts. | `number` | `0` | no |
 | device\_name | The name of the device to mount. | `string` | `"/dev/xvda"` | no |
 | egress\_cidr\_blocks | List of CIDR ranges to allow outbound traffic at security group level. Defaults to 0.0.0.0/0 | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | egress\_ipv6\_cidr\_blocks | List of IPv6 CIDR ranges to allow outbound traffic at security group level. Defaults to ::/0 | `list(string)` | <pre>[<br>  "::/0"<br>]</pre> | no |

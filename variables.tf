@@ -68,6 +68,12 @@ variable "desired_capacity" {
   default     = 1
 }
 
+variable "on_demand_base_capacity" {
+  type        = number
+  description = "Auto Scalling Group value for desired capacity for instance lifecycle type on-demand of bastion hosts."
+  default     = 0
+}
+
 variable "max_size" {
   type        = number
   description = "Auto Scalling Group value for maximum capacity of bastion hosts."
