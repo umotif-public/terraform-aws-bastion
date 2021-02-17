@@ -5,7 +5,25 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
-- Update module versions to support v3 provider
+
+
+<a name="1.5.0"></a>
+## [1.5.0] - 2020-12-18
+
+- [On Demand] Support for on-demand instance lifecycle type. ([#8](https://github.com/umotif-public/terraform-aws-bastion/issues/8))
+- Update README.md
+
+
+<a name="1.4.2"></a>
+## [1.4.2] - 2020-11-09
+
+- Update module to remove 0.14 limit ([#7](https://github.com/umotif-public/terraform-aws-bastion/issues/7))
+
+
+<a name="1.4.1"></a>
+## [1.4.1] - 2020-08-05
+
+- Feature/v3 provider support ([#6](https://github.com/umotif-public/terraform-aws-bastion/issues/6))
 
 
 <a name="1.4.0"></a>
@@ -64,7 +82,10 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.4.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.5.0...HEAD
+[1.5.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.4.2...1.5.0
+[1.4.2]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.4.1...1.4.2
+[1.4.1]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.4.0...1.4.1
 [1.4.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.3.0...1.4.0
 [1.3.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/1.1.0...1.2.0

@@ -10,14 +10,14 @@ This module will create Bastion Host/s which will make use of Launch Template an
 
 ## Terraform versions
 
-Terraform 0.12. Pin module version to `~> v1.0`. Submit pull-requests to `master` branch.
+Terraform 0.13+. Pin module version to `~> v2.0`. Submit pull-requests to `master` branch.
 
 ## Usage
 
 ```hcl
 module "bastion" {
   source = "umotif-public/bastion/aws"
-  version = "~> 1.4.0"
+  version = "~> 2.0.0"
 
   name_prefix = "core-example"
 
@@ -37,10 +37,6 @@ module "bastion" {
 
 ![Basiton](bastion-arch.jpeg)
 
-## Assumptions
-
-Module is to be used with Terraform > 0.12.
-
 ## Examples
 
 * [Bastion Host](https://github.com/umotif-public/terraform-aws-bastion/tree/master/examples/core)
@@ -54,7 +50,7 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12.6 |
+| terraform | >= 0.13.0 |
 | aws | >= 2.45 |
 
 ## Providers
@@ -77,10 +73,10 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | asg\_scale\_up\_min\_size | Auto Scalling Group value for minimum capacity of bastion hosts. Scale up action. | `number` | `1` | no |
 | asg\_scale\_up\_recurrence | The time when recurring future actions will start. Start time is specified by the user following the Unix cron syntax format. Scale up action. | `string` | `"0 9 * * MON-FRI"` | no |
 | availability\_zones | Availability zones for the default Ireland region. | `list(string)` | <pre>[<br>  "eu-west-1a",<br>  "eu-west-1b",<br>  "eu-west-1c"<br>]</pre> | no |
+| aws\_partition | A Partition is a group of AWS Region and Service objects. You can use a partition to determine what services are available in a region, or what regions a service is available in. | `string` | `"public"` | no |
 | bastion\_instance\_types | Bastion instance types used for spot instances. | `list(string)` | <pre>[<br>  "t3.nano",<br>  "t3.micro",<br>  "t3.small",<br>  "t2.nano",<br>  "t2.micro",<br>  "t2.small"<br>]</pre> | no |
 | delete\_on\_termination | Whether the volume should be destroyed on instance termination. | `bool` | `true` | no |
 | desired\_capacity | Auto Scalling Group value for desired capacity of bastion hosts. | `number` | `1` | no |
-| on\_demand\_base\_capacity | Auto Scalling Group value for desired capacity for instance lifecycle type on-demand of bastion hosts. | `number` | `0` | no |
 | device\_name | The name of the device to mount. | `string` | `"/dev/xvda"` | no |
 | egress\_cidr\_blocks | List of CIDR ranges to allow outbound traffic at security group level. Defaults to 0.0.0.0/0 | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | egress\_ipv6\_cidr\_blocks | List of IPv6 CIDR ranges to allow outbound traffic at security group level. Defaults to ::/0 | `list(string)` | <pre>[<br>  "::/0"<br>]</pre> | no |
@@ -93,6 +89,7 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | max\_size | Auto Scalling Group value for maximum capacity of bastion hosts. | `number` | `1` | no |
 | min\_size | Auto Scalling Group value for minimum capacity of bastion hosts. | `number` | `1` | no |
 | name\_prefix | A prefix used for naming resources. | `string` | n/a | yes |
+| on\_demand\_base\_capacity | Auto Scalling Group value for desired capacity for instance lifecycle type on-demand of bastion hosts. | `number` | `0` | no |
 | private\_subnets | Classless Inter-Domain Routing ranges for private subnets. | `list(string)` | `[]` | no |
 | public\_subnets | Classless Inter-Domain Routing ranges for public subnets. | `list(string)` | n/a | yes |
 | region | AWS region in which resources will get deployed. Defaults to Ireland. | `string` | `"eu-west-1"` | no |

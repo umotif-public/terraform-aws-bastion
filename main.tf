@@ -164,20 +164,7 @@ resource "aws_iam_role" "bastion" {
   name = "${var.name_prefix}-bastion-role"
   path = "/"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
-      "Effect": "Allow"
-    }
-  ]
-}
-EOF
+  assume_role_policy = data.aws_iam_policy_document.bastion_role_assume_role_policy.json
 
   tags = var.tags
 }

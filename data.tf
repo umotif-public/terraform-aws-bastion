@@ -20,3 +20,14 @@ data "aws_ami" "amazon_linux" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "bastion_role_assume_role_policy" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = var.aws_partition == "china" ? ["ec2.amazonaws.com.cn"] : ["ec2.amazonaws.com"]
+    }
+  }
+}
