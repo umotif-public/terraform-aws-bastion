@@ -214,3 +214,15 @@ variable "volume_type" {
   description = "The type of volume. Can be `standard`, `gp2`, or `io1`."
   default     = "gp2"
 }
+
+variable "aws_partition" {
+  type    = string
+  default = "public"
+
+  description = "A Partition is a group of AWS Region and Service objects. You can use a partition to determine what services are available in a region, or what regions a service is available in."
+
+  validation {
+    condition     = contains(["public", "china"], var.aws_partition)
+    error_message = "Argument \"aws_partition\" must be either \"public\" or \"china\"."
+  }
+}
