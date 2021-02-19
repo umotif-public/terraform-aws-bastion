@@ -11,7 +11,7 @@ else
 
   ASG_NAME=$(aws --region $${REGION} ec2 describe-tags --filters "Name=resource-id,Values=$${INSTANCE_ID}" --query 'Tags[?Key==`aws:autoscaling:groupName`].Value' --output text)
 
-  HOSTED_ZONE_NAME=$(aws route53 get-hosted-zone --id ${HOSTED_ZONE_ID} --query 'HostedZone.Name' --output text)
+  HOSTED_ZONE_NAME=$(aws --region $${REGION} route53 get-hosted-zone --id ${HOSTED_ZONE_ID} --query 'HostedZone.Name' --output text)
   ROUTE53_NAME="${NAME_PREFIX}-bastion.$${HOSTED_ZONE_NAME}"
 
   PUBLIC_IPS=""
