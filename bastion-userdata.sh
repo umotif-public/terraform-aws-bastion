@@ -23,7 +23,7 @@ else
 
   JSON='{"Changes":[{"Action":"UPSERT","ResourceRecordSet":{"Name":"'"$${ROUTE53_NAME}"'","Type":"A","TTL":300,"ResourceRecords":['"$${PUBLIC_IPS}"']}}]}'
 
-  aws route53 change-resource-record-sets \
+  aws --region $${REGION} route53 change-resource-record-sets \
     --hosted-zone-id ${HOSTED_ZONE_ID} \
     --change-batch $${JSON}
 fi
