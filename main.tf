@@ -169,44 +169,11 @@ resource "aws_iam_role" "bastion" {
   tags = var.tags
 }
 
-resource "aws_iam_policy" "bastion" {
+resource "aws_iam_role_policy" "iam_bastion_policy" {
   count = var.hosted_zone_id != "" ? 1 : 0
 
-  name = "${var.name_prefix}-bastion-policy"
+  name = "custom-bastion-policy"
+  role = aws_iam_role.bastion.name
 
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "autoscaling:DescribeAutoScalingInstances",
-        "autoscaling:DescribeAutoScalingGroups",
-        "ec2:DescribeAddresses",
-        "ec2:DescribeInstances",
-        "ec2:DescribeTags"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect":"Allow",
-      "Action": [
-        "route53:ChangeResourceRecordSets",
-        "route53:GetHostedZone"
-      ],
-      "Resource": [
-        "arn:aws:route53:::hostedzone/${var.hosted_zone_id}"
-      ]
-    }
-  ]
-}
-EOF
-}
-
-resource "aws_iam_role_policy_attachment" "bastion" {
-  count = var.hosted_zone_id != "" ? 1 : 0
-
-  role       = aws_iam_role.bastion.name
-  policy_arn = aws_iam_policy.bastion[0].arn
+  policy = data.aws_iam_policy_document.bastion_role_policy[0].json
 }

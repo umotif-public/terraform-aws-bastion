@@ -31,3 +31,28 @@ data "aws_iam_policy_document" "bastion_role_assume_role_policy" {
     }
   }
 }
+
+data "aws_iam_policy_document" "bastion_role_policy" {
+  count = var.hosted_zone_id != "" ? 1 : 0
+
+  statement {
+    actions = [
+      "autoscaling:DescribeAutoScalingInstances",
+      "autoscaling:DescribeAutoScalingGroups",
+      "ec2:DescribeAddresses",
+      "ec2:DescribeInstances",
+      "ec2:DescribeTags"
+    ]
+    effect    = "Allow"
+    resources = ["*"]
+  }
+
+  statement {
+    actions = [
+      "route53:ChangeResourceRecordSets",
+      "route53:GetHostedZone"
+    ]
+    effect    = "Allow"
+    resources = var.aws_partition == "china" ? ["arn:aws-cn:route53:::hostedzone/${var.hosted_zone_id}"] : ["arn:aws:route53:::hostedzone/${var.hosted_zone_id}"]
+  }
+}
