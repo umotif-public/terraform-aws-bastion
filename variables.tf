@@ -219,7 +219,7 @@ variable "aws_partition" {
   type    = string
   default = "public"
 
-  description = "A Partition is a group of AWS Region and Service objects. You can use a partition to determine what services are available in a region, or what regions a service is available in."
+  description = "[Deprecated] Variable will be removed in version `3.0.0`. A Partition is a group of AWS Region and Service objects. You can use a partition to determine what services are available in a region, or what regions a service is available in."
 
   validation {
     condition     = contains(["public", "china"], var.aws_partition)
