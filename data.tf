@@ -1,4 +1,5 @@
 data "aws_caller_identity" "current" {}
+data "aws_partition" "current" {}
 
 data "aws_ami" "amazon_linux" {
   most_recent = true
@@ -27,7 +28,7 @@ data "aws_iam_policy_document" "bastion_role_assume_role_policy" {
 
     principals {
       type        = "Service"
-      identifiers = var.aws_partition == "china" ? ["ec2.amazonaws.com.cn"] : ["ec2.amazonaws.com"]
+      identifiers = ["ec2.${data.aws_partition.current.dns_suffix}"]
     }
   }
 }
@@ -53,6 +54,6 @@ data "aws_iam_policy_document" "bastion_role_policy" {
       "route53:GetHostedZone"
     ]
     effect    = "Allow"
-    resources = var.aws_partition == "china" ? ["arn:aws-cn:route53:::hostedzone/${var.hosted_zone_id}"] : ["arn:aws:route53:::hostedzone/${var.hosted_zone_id}"]
+    resources = ["arn:${data.aws_partition.current.partition}:route53:::hostedzone/${var.hosted_zone_id}"]
   }
 }
