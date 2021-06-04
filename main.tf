@@ -1,7 +1,6 @@
 #####
 # Bastion Host configuration
 #####
-
 resource "aws_launch_template" "bastion" {
   name_prefix = "${var.name_prefix}-bastion-"
   image_id    = var.ami_id != "" ? var.ami_id : data.aws_ami.amazon_linux.id
@@ -158,6 +157,8 @@ resource "aws_security_group" "bastion" {
 resource "aws_iam_instance_profile" "bastion" {
   name = "${var.name_prefix}-bastion-instance-profile"
   role = aws_iam_role.bastion.name
+
+  tags = var.tags
 }
 
 resource "aws_iam_role" "bastion" {
