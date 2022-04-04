@@ -1,0 +1,16 @@
+include:
+  local: .gitlab/Terraform-Module-Upload.gitlab-ci.yml
+
+stages:
+  - upload
+
+upload:
+  extends: .terraform_module_upload
+  variables:
+    TERRAFORM_MODULE_NAME: terraform-aws-bastion
+    TERRAFORM_MODULE_SYSTEM: aws
+  stage: upload
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+    # Copy pasta from https://gitlab.com/mattkasa/gitlab-local-file/-/blob/main/.gitlab-ci.yml

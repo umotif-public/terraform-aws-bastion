@@ -226,3 +226,9 @@ variable "aws_partition" {
     error_message = "Argument \"aws_partition\" must be either \"public\" or \"china\"."
   }
 }
+
+variable "time_zone" {
+  type        = string
+  default     = "Etc/UTC"
+  description = "Used for ASG Scale Up/Down. Valid values are the canonical names of the IANA time zones (such as Etc/GMT+9 or London/Europe)"
+}
