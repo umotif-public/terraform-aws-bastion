@@ -102,6 +102,7 @@ resource "aws_autoscaling_schedule" "asg_scale_down" {
   max_size               = var.asg_scale_down_max_size
   desired_capacity       = var.asg_scale_down_desired_capacity
   recurrence             = var.asg_scale_down_recurrence
+  time_zone              = var.time_zone
 
   depends_on = [aws_autoscaling_group.bastion]
 }
@@ -115,6 +116,7 @@ resource "aws_autoscaling_schedule" "asg_scale_up" {
   max_size               = var.asg_scale_up_max_size
   desired_capacity       = var.asg_scale_up_desired_capacity
   recurrence             = var.asg_scale_up_recurrence
+  time_zone              = var.time_zone
 
   depends_on = [aws_autoscaling_group.bastion]
 }

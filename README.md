@@ -119,6 +119,7 @@ No modules.
 | <a name="input_ssh_port"></a> [ssh\_port](#input\_ssh\_port) | SSH port used to access a bastion host. | `number` | `22` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Default tags attached to all resources. | `map(string)` | <pre>{<br>  "ServiceType": "ceng-eks"<br>}</pre> | no |
 | <a name="input_termination_policies"></a> [termination\_policies](#input\_termination\_policies) | A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, OldestLaunchTemplate, AllocationStrategy. | `list(string)` | <pre>[<br>  "OldestInstance"<br>]</pre> | no |
+| <a name="input_time_zone"></a> [time\_zone](#input\_time\_zone) | Used for ASG Scale Up/Down. Valid values are the canonical names of the IANA time zones (such as Etc/GMT+9 or London/Europe) | `string` | `"Etc/UTC"` | no |
 | <a name="input_userdata_file_content"></a> [userdata\_file\_content](#input\_userdata\_file\_content) | The user data to provide when launching the instance. | `string` | `""` | no |
 | <a name="input_volume_size"></a> [volume\_size](#input\_volume\_size) | The size of the volume in gigabytes. | `number` | `20` | no |
 | <a name="input_volume_type"></a> [volume\_type](#input\_volume\_type) | The type of volume. Can be `standard`, `gp2`, or `io1`. | `string` | `"gp2"` | no |
