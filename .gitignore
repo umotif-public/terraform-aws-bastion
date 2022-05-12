@@ -1,7 +1,8 @@
 *.DS_Store
 errored.tfstate
-.terraform
+*.terraform
 crash.log
 terraform.tfstate
 *.tfstate*
 terraform.tfvars
+*.terraform.lock.hcl

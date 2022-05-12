@@ -1,4 +1,4 @@
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/umotif-public/terraform-aws-bastion?style=social)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/umotif-public/terraform-aws-bastion)](https://github.com/umotif-public/terraform-aws-bastion/releases/latest)
 
 # terraform-aws-bastion
 
@@ -50,14 +50,14 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.34 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.7 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.34 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0.0 |
 
 ## Modules
 
