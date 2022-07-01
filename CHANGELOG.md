@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- Add documentation ([#18](https://github.com/umotif-public/terraform-aws-bastion/issues/18))
 - Allow setting time_zone for ASG schedules ([#17](https://github.com/umotif-public/terraform-aws-bastion/issues/17))
 
 
