@@ -18,7 +18,7 @@ variable "availability_zones" {
 variable "bastion_instance_types" {
   type        = list(string)
   description = "Bastion instance types used for spot instances."
-  default     = ["t3.nano", "t3.micro", "t3.small", "t2.nano", "t2.micro", "t2.small"]
+  default     = ["t4g.nano", "t4g.micro", "t4g.small"]
 }
 
 variable "vpc_id" {
