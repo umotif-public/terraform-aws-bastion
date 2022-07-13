@@ -35,7 +35,7 @@ module "bastion" {
 
 ## Bastion Host Visual Architecture
 
-![Basiton](bastion-arch.jpeg)
+![Bastion](bastion-arch.jpeg)
 
 ## Examples
 
@@ -43,21 +43,21 @@ module "bastion" {
 
 ## Authors
 
-Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](https://www.linkedin.com/in/marcincuber/).
+Module managed by [uMotif](https://github.com/umotif-public).
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.7 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.11 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0.0, < 5.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0.0, < 5.0.0 |
 
 ## Modules
 
@@ -95,8 +95,7 @@ No modules.
 | <a name="input_asg_scale_up_min_size"></a> [asg\_scale\_up\_min\_size](#input\_asg\_scale\_up\_min\_size) | Auto Scalling Group value for minimum capacity of bastion hosts. Scale up action. | `number` | `1` | no |
 | <a name="input_asg_scale_up_recurrence"></a> [asg\_scale\_up\_recurrence](#input\_asg\_scale\_up\_recurrence) | The time when recurring future actions will start. Start time is specified by the user following the Unix cron syntax format. Scale up action. | `string` | `"0 9 * * MON-FRI"` | no |
 | <a name="input_availability_zones"></a> [availability\_zones](#input\_availability\_zones) | Availability zones for the default Ireland region. | `list(string)` | <pre>[<br>  "eu-west-1a",<br>  "eu-west-1b",<br>  "eu-west-1c"<br>]</pre> | no |
-| <a name="input_aws_partition"></a> [aws\_partition](#input\_aws\_partition) | [Deprecated] Variable will be removed in version `3.0.0`. A Partition is a group of AWS Region and Service objects. You can use a partition to determine what services are available in a region, or what regions a service is available in. | `string` | `"public"` | no |
-| <a name="input_bastion_instance_types"></a> [bastion\_instance\_types](#input\_bastion\_instance\_types) | Bastion instance types used for spot instances. | `list(string)` | <pre>[<br>  "t3.nano",<br>  "t3.micro",<br>  "t3.small",<br>  "t2.nano",<br>  "t2.micro",<br>  "t2.small"<br>]</pre> | no |
+| <a name="input_bastion_instance_types"></a> [bastion\_instance\_types](#input\_bastion\_instance\_types) | Bastion instance types used for spot instances. | `list(string)` | <pre>[<br>  "t4g.nano",<br>  "t4g.micro",<br>  "t4g.small"<br>]</pre> | no |
 | <a name="input_delete_on_termination"></a> [delete\_on\_termination](#input\_delete\_on\_termination) | Whether the volume should be destroyed on instance termination. | `bool` | `true` | no |
 | <a name="input_desired_capacity"></a> [desired\_capacity](#input\_desired\_capacity) | Auto Scalling Group value for desired capacity of bastion hosts. | `number` | `1` | no |
 | <a name="input_device_name"></a> [device\_name](#input\_device\_name) | The name of the device to mount. | `string` | `"/dev/xvda"` | no |
@@ -112,7 +111,6 @@ No modules.
 | <a name="input_min_size"></a> [min\_size](#input\_min\_size) | Auto Scalling Group value for minimum capacity of bastion hosts. | `number` | `1` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | A prefix used for naming resources. | `string` | n/a | yes |
 | <a name="input_on_demand_base_capacity"></a> [on\_demand\_base\_capacity](#input\_on\_demand\_base\_capacity) | Auto Scalling Group value for desired capacity for instance lifecycle type on-demand of bastion hosts. | `number` | `0` | no |
-| <a name="input_private_subnets"></a> [private\_subnets](#input\_private\_subnets) | Classless Inter-Domain Routing ranges for private subnets. | `list(string)` | `[]` | no |
 | <a name="input_public_subnets"></a> [public\_subnets](#input\_public\_subnets) | Classless Inter-Domain Routing ranges for public subnets. | `list(string)` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | AWS region in which resources will get deployed. Defaults to Ireland. | `string` | `"eu-west-1"` | no |
 | <a name="input_ssh_key_name"></a> [ssh\_key\_name](#input\_ssh\_key\_name) | SSH key used to connect to the bastion host | `string` | n/a | yes |

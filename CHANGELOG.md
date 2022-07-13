@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- Removing unneeded variables
+- Upgrade Amazon Linux AMI version to use 5.10 kernal version
+
+
+<a name="2.3.0"></a>
+## [2.3.0] - 2022-05-12
+
+- Add documentation ([#18](https://github.com/umotif-public/terraform-aws-bastion/issues/18))
 - Allow setting time_zone for ASG schedules ([#17](https://github.com/umotif-public/terraform-aws-bastion/issues/17))
 
 
@@ -119,7 +127,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.2.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.3.0...HEAD
+[2.3.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.2.0...2.3.0
 [2.2.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.0.3...2.1.0
 [2.0.3]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.0.2...2.0.3
