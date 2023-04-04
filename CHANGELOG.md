@@ -5,8 +5,13 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
-- Removing unneeded variables
-- Upgrade Amazon Linux AMI version to use 5.10 kernal version
+- DEVOPS-1761 Updated volume type for EBS volume for the instance to use
+
+
+<a name="2.4.0"></a>
+## [2.4.0] - 2022-07-13
+
+- Upgrade Amazon Linux AMI version to use 5.10 kernel version ([#19](https://github.com/umotif-public/terraform-aws-bastion/issues/19))
 
 
 <a name="2.3.0"></a>
@@ -127,7 +132,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.3.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.0...HEAD
+[2.4.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.2.0...2.3.0
 [2.2.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.0.3...2.1.0
