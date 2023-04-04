@@ -3,18 +3,6 @@ variable "name_prefix" {
   type        = string
 }
 
-variable "region" {
-  type        = string
-  default     = "eu-west-1"
-  description = "AWS region in which resources will get deployed. Defaults to Ireland."
-}
-
-variable "availability_zones" {
-  type        = list(string)
-  default     = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
-  description = "Availability zones for the default Ireland region."
-}
-
 variable "bastion_instance_types" {
   type        = list(string)
   description = "Bastion instance types used for spot instances."
@@ -78,11 +66,6 @@ variable "min_size" {
   type        = number
   description = "Auto Scalling Group value for minimum capacity of bastion hosts."
   default     = 1
-}
-
-variable "ssh_port" {
-  description = "SSH port used to access a bastion host."
-  default     = 22
 }
 
 variable "ingress_cidr_blocks" {

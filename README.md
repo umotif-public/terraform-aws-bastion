@@ -76,7 +76,6 @@ No modules.
 | [aws_launch_template.bastion](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
 | [aws_security_group.bastion](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_ami.amazon_linux](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.bastion_role_assume_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.bastion_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_partition.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/partition) | data source |
@@ -94,7 +93,6 @@ No modules.
 | <a name="input_asg_scale_up_max_size"></a> [asg\_scale\_up\_max\_size](#input\_asg\_scale\_up\_max\_size) | Auto Scalling Group value for maximum capacity of bastion hosts. Scale up action. | `number` | `1` | no |
 | <a name="input_asg_scale_up_min_size"></a> [asg\_scale\_up\_min\_size](#input\_asg\_scale\_up\_min\_size) | Auto Scalling Group value for minimum capacity of bastion hosts. Scale up action. | `number` | `1` | no |
 | <a name="input_asg_scale_up_recurrence"></a> [asg\_scale\_up\_recurrence](#input\_asg\_scale\_up\_recurrence) | The time when recurring future actions will start. Start time is specified by the user following the Unix cron syntax format. Scale up action. | `string` | `"0 9 * * MON-FRI"` | no |
-| <a name="input_availability_zones"></a> [availability\_zones](#input\_availability\_zones) | Availability zones for the default Ireland region. | `list(string)` | <pre>[<br>  "eu-west-1a",<br>  "eu-west-1b",<br>  "eu-west-1c"<br>]</pre> | no |
 | <a name="input_bastion_instance_types"></a> [bastion\_instance\_types](#input\_bastion\_instance\_types) | Bastion instance types used for spot instances. | `list(string)` | <pre>[<br>  "t4g.nano",<br>  "t4g.micro",<br>  "t4g.small"<br>]</pre> | no |
 | <a name="input_delete_on_termination"></a> [delete\_on\_termination](#input\_delete\_on\_termination) | Whether the volume should be destroyed on instance termination. | `bool` | `true` | no |
 | <a name="input_desired_capacity"></a> [desired\_capacity](#input\_desired\_capacity) | Auto Scalling Group value for desired capacity of bastion hosts. | `number` | `1` | no |
@@ -112,15 +110,13 @@ No modules.
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | A prefix used for naming resources. | `string` | n/a | yes |
 | <a name="input_on_demand_base_capacity"></a> [on\_demand\_base\_capacity](#input\_on\_demand\_base\_capacity) | Auto Scalling Group value for desired capacity for instance lifecycle type on-demand of bastion hosts. | `number` | `0` | no |
 | <a name="input_public_subnets"></a> [public\_subnets](#input\_public\_subnets) | Classless Inter-Domain Routing ranges for public subnets. | `list(string)` | n/a | yes |
-| <a name="input_region"></a> [region](#input\_region) | AWS region in which resources will get deployed. Defaults to Ireland. | `string` | `"eu-west-1"` | no |
 | <a name="input_ssh_key_name"></a> [ssh\_key\_name](#input\_ssh\_key\_name) | SSH key used to connect to the bastion host | `string` | n/a | yes |
-| <a name="input_ssh_port"></a> [ssh\_port](#input\_ssh\_port) | SSH port used to access a bastion host. | `number` | `22` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Default tags attached to all resources. | `map(string)` | <pre>{<br>  "ServiceType": "ceng-eks"<br>}</pre> | no |
 | <a name="input_termination_policies"></a> [termination\_policies](#input\_termination\_policies) | A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, OldestLaunchTemplate, AllocationStrategy. | `list(string)` | <pre>[<br>  "OldestInstance"<br>]</pre> | no |
 | <a name="input_time_zone"></a> [time\_zone](#input\_time\_zone) | Used for ASG Scale Up/Down. Valid values are the canonical names of the IANA time zones (such as Etc/GMT+9 or London/Europe) | `string` | `"Etc/UTC"` | no |
 | <a name="input_userdata_file_content"></a> [userdata\_file\_content](#input\_userdata\_file\_content) | The user data to provide when launching the instance. | `string` | `""` | no |
 | <a name="input_volume_size"></a> [volume\_size](#input\_volume\_size) | The size of the volume in gigabytes. | `number` | `20` | no |
-| <a name="input_volume_type"></a> [volume\_type](#input\_volume\_type) | The type of volume. Can be `standard`, `gp2`, or `io1`. | `string` | `"gp2"` | no |
+| <a name="input_volume_type"></a> [volume\_type](#input\_volume\_type) | The volume type. Can be one of standard, 'gp2', 'gp3', 'io1', 'io2', 'sc1' or 'st1'. | `string` | `"gp3"` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | VPC ID where bastion hosts and security groups will be created. | `string` | n/a | yes |
 
 ## Outputs
