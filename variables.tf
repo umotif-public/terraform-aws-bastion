@@ -205,8 +205,8 @@ variable "encrypted" {
 
 variable "volume_type" {
   type        = string
-  description = "The type of volume. Can be `standard`, `gp2`, or `io1`."
-  default     = "gp2"
+  description = "The volume type. Can be one of standard, 'gp2', 'gp3', 'io1', 'io2', 'sc1' or 'st1'."
+  default     = "gp3"
 }
 
 variable "time_zone" {
