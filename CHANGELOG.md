@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
-- DEVOPS-1761 Updated volume type for EBS volume for the instance to use
+
+
+<a name="2.4.1"></a>
+## [2.4.1] - 2023-04-04
+
+- DEVOPS-1761 Updated volume type for EBS volume for the instance to use ([#20](https://github.com/umotif-public/terraform-aws-bastion/issues/20))
 
 
 <a name="2.4.0"></a>
@@ -132,7 +137,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.1...HEAD
+[2.4.1]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.0...2.4.1
 [2.4.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.2.0...2.3.0
 [2.2.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.1.0...2.2.0

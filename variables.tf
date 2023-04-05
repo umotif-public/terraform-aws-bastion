@@ -27,6 +27,12 @@ variable "tags" {
   }
 }
 
+variable "ssh_port" {
+  description = "SSH port used to access a bastion host."
+  default     = 22
+  type        = number
+}
+
 variable "ssh_key_name" {
   type        = string
   description = "SSH key used to connect to the bastion host"
