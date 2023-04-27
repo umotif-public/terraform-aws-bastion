@@ -112,6 +112,7 @@ No modules.
 | <a name="input_public_subnets"></a> [public\_subnets](#input\_public\_subnets) | Classless Inter-Domain Routing ranges for public subnets. | `list(string)` | n/a | yes |
 | <a name="input_ssh_key_name"></a> [ssh\_key\_name](#input\_ssh\_key\_name) | SSH key used to connect to the bastion host | `string` | n/a | yes |
 | <a name="input_ssh_port"></a> [ssh\_port](#input\_ssh\_port) | SSH port used to access a bastion host. | `number` | `22` | no |
+| <a name="input_tag_specifications"></a> [tag\_specifications](#input\_tag\_specifications) | The tags to apply to the resources during launch. You can tag instances, volumes, elastic GPUs and spot instance requests. | `list(string)` | <pre>[<br>  "instance",<br>  "volume",<br>  "network-interface",<br>  "spot-instances-request"<br>]</pre> | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Default tags attached to all resources. | `map(string)` | <pre>{<br>  "ServiceType": "ceng-eks"<br>}</pre> | no |
 | <a name="input_termination_policies"></a> [termination\_policies](#input\_termination\_policies) | A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, OldestLaunchTemplate, AllocationStrategy. | `list(string)` | <pre>[<br>  "OldestInstance"<br>]</pre> | no |
 | <a name="input_time_zone"></a> [time\_zone](#input\_time\_zone) | Used for ASG Scale Up/Down. Valid values are the canonical names of the IANA time zones (such as Etc/GMT+9 or London/Europe) | `string` | `"Etc/UTC"` | no |
@@ -126,6 +127,7 @@ No modules.
 |------|-------------|
 | <a name="output_auto_scaling_group_arn"></a> [auto\_scaling\_group\_arn](#output\_auto\_scaling\_group\_arn) | The ARN of the bastion's auto scaling group. |
 | <a name="output_auto_scaling_group_id"></a> [auto\_scaling\_group\_id](#output\_auto\_scaling\_group\_id) | The ID of the bastion's auto scaling group. |
+| <a name="output_aws_ami"></a> [aws\_ami](#output\_aws\_ami) | n/a |
 | <a name="output_iam_role_arn"></a> [iam\_role\_arn](#output\_iam\_role\_arn) | The ARN of the bastion's IAM Role. |
 | <a name="output_iam_role_id"></a> [iam\_role\_id](#output\_iam\_role\_id) | The ID or name of the bastion's IAM Role. |
 | <a name="output_launch_template_arn"></a> [launch\_template\_arn](#output\_launch\_template\_arn) | The ARN of the bastion's launch template. |

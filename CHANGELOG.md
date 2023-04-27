@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- Upgrade ami to Amazon Linux 2023
+- Add new 'tag_specifications' feature
+
+
+<a name="2.4.2"></a>
+## [2.4.2] - 2023-04-05
+
+- Re-add ssh-port variable ([#21](https://github.com/umotif-public/terraform-aws-bastion/issues/21))
 
 
 <a name="2.4.1"></a>
@@ -137,7 +145,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.1...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.2...HEAD
+[2.4.2]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.1...2.4.2
 [2.4.1]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.0...2.4.1
 [2.4.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.2.0...2.3.0

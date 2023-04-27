@@ -203,3 +203,9 @@ variable "time_zone" {
   default     = "Etc/UTC"
   description = "Used for ASG Scale Up/Down. Valid values are the canonical names of the IANA time zones (such as Etc/GMT+9 or London/Europe)"
 }
+
+variable "tag_specifications" {
+  type        = list(string)
+  default     = ["instance", "volume", "network-interface", "spot-instances-request"]
+  description = "The tags to apply to the resources during launch. You can tag instances, volumes, elastic GPUs and spot instance requests. "
+}

@@ -7,7 +7,13 @@ data "aws_ami" "amazon_linux" {
   filter {
     name = "name"
 
-    values = ["amzn2-ami-kernel-5.10-hvm-*-arm64-gp2"]
+    values = ["al2023-ami-2023*"]
+  }
+
+  filter {
+    name = "architecture"
+
+    values = ["arm64"]
   }
 
   filter {
