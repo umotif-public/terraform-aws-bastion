@@ -32,3 +32,7 @@ output "iam_role_id" {
   description = "The ID or name of the bastion's IAM Role."
   value       = aws_iam_role.bastion.id
 }
+
+output "aws_ami" {
+  value = data.aws_ami.amazon_linux.image_id
+}

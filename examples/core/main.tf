@@ -40,10 +40,18 @@ module "bastion" {
   userdata_file_content = templatefile("./custom-userdata.sh", {}) # if you want to use default one, simply remove this line
 
   tags = {
-    Project = "Test"
+    Name        = "Test"
+    Environment = "tst"
+    Terraform   = "true"
   }
+
+  tag_specifications = [
+    "instance",
+    "volume",
+    "network-interface",
+  ]
 }
 
-output "sg_id" {
-  value = module.bastion.security_group_id
+output "aws_ami" {
+  value = module.bastion.aws_ami
 }

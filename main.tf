@@ -31,6 +31,14 @@ resource "aws_launch_template" "bastion" {
 
   tags = var.tags
 
+  dynamic "tag_specifications" {
+    for_each = toset(var.tag_specifications)
+    content {
+      resource_type = tag_specifications.key
+      tags          = var.tags
+    }
+  }
+
   lifecycle {
     create_before_destroy = true
   }
