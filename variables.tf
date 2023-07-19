@@ -168,36 +168,6 @@ variable "userdata_file_content" {
   default     = ""
 }
 
-variable "device_name" {
-  type        = string
-  description = "The name of the device to mount."
-  default     = "/dev/xvda"
-}
-
-variable "delete_on_termination" {
-  type        = bool
-  description = "Whether the volume should be destroyed on instance termination."
-  default     = true
-}
-
-variable "volume_size" {
-  type        = number
-  description = "The size of the volume in gigabytes."
-  default     = 20
-}
-
-variable "encrypted" {
-  type        = bool
-  description = "Enables EBS encryption on the volume."
-  default     = true
-}
-
-variable "volume_type" {
-  type        = string
-  description = "The volume type. Can be one of standard, 'gp2', 'gp3', 'io1', 'io2', 'sc1' or 'st1'."
-  default     = "gp3"
-}
-
 variable "time_zone" {
   type        = string
   default     = "Etc/UTC"
@@ -208,4 +178,31 @@ variable "tag_specifications" {
   type        = list(string)
   default     = ["instance", "volume", "network-interface", "spot-instances-request"]
   description = "The tags to apply to the resources during launch. You can tag instances, volumes, elastic GPUs and spot instance requests. "
+}
+
+variable "block_device_mappings" {
+  description = "Specify volumes to attach to the instance besides the volumes specified by the AMI"
+  type = list(object({
+    device_name  = string
+    no_device    = optional(string)
+    virtual_name = optional(string)
+    ebs = optional(object({
+      delete_on_termination = optional(bool, true)
+      encrypted             = optional(bool, true)
+      iops                  = optional(number)
+      kms_key_id            = optional(string)
+      snapshot_id           = optional(string)
+      volume_size           = optional(number)
+      volume_type           = optional(string)
+      throughput            = optional(number)
+    }))
+  }))
+
+  default = []
+}
+
+variable "ebs_optimized" {
+  type        = bool
+  description = "If true, the launched EC2 instance will be EBS-optimized"
+  default     = null
 }

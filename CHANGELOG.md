@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="2.5.0"></a>
+## [2.5.0] - 2023-07-17
+
+- AWS provider Upgrade ([#23](https://github.com/umotif-public/terraform-aws-bastion/issues/23))
+
+
 <a name="2.4.3"></a>
 ## [2.4.3] - 2023-04-27
 
@@ -149,7 +155,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.3...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.5.0...HEAD
+[2.5.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.3...2.5.0
 [2.4.3]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.2...2.4.3
 [2.4.2]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.1...2.4.2
 [2.4.1]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.0...2.4.1
