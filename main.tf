@@ -16,16 +16,32 @@ resource "aws_launch_template" "bastion" {
     security_groups             = [aws_security_group.bastion.id]
   }
 
-  block_device_mappings {
-    device_name = var.device_name
+  dynamic "block_device_mappings" {
+    for_each = var.block_device_mappings
 
-    ebs {
-      delete_on_termination = var.delete_on_termination
-      volume_size           = var.volume_size
-      volume_type           = var.volume_type
-      encrypted             = var.encrypted
+    content {
+      device_name  = try(block_device_mappings.value.device_name, "/dev/xvda")
+      no_device    = try(block_device_mappings.value.no_device, null)
+      virtual_name = try(block_device_mappings.value.virtual_name, null)
+
+      dynamic "ebs" {
+        for_each = try([block_device_mappings.value.ebs], [])
+
+        content {
+          delete_on_termination = try(ebs.value.delete_on_termination)
+          encrypted             = try(ebs.value.snapshot_id) != null ? null : try(ebs.value.encrypted, null)
+          iops                  = try(ebs.value.iops, null)
+          kms_key_id            = try(ebs.value.encrypted) ? try(ebs.value.kms_key_id, null) : null
+          snapshot_id           = try(ebs.value.snapshot_id, null)
+          volume_size           = try(ebs.value.volume_size, null)
+          volume_type           = try(ebs.value.volume_type, null)
+          throughput            = try(ebs.value.throughput, null)
+        }
+      }
     }
   }
+
+  ebs_optimized = var.ebs_optimized
 
   user_data = var.userdata_file_content != "" ? base64encode(var.userdata_file_content) : base64encode(templatefile("${path.module}/bastion-userdata.sh", { HOSTED_ZONE_ID = var.hosted_zone_id, NAME_PREFIX = var.name_prefix }))
 

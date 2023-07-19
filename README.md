@@ -50,7 +50,7 @@ Module managed by [uMotif](https://github.com/umotif-public).
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.11 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0.0 |
 
 ## Providers
@@ -94,14 +94,13 @@ No modules.
 | <a name="input_asg_scale_up_min_size"></a> [asg\_scale\_up\_min\_size](#input\_asg\_scale\_up\_min\_size) | Auto Scalling Group value for minimum capacity of bastion hosts. Scale up action. | `number` | `1` | no |
 | <a name="input_asg_scale_up_recurrence"></a> [asg\_scale\_up\_recurrence](#input\_asg\_scale\_up\_recurrence) | The time when recurring future actions will start. Start time is specified by the user following the Unix cron syntax format. Scale up action. | `string` | `"0 9 * * MON-FRI"` | no |
 | <a name="input_bastion_instance_types"></a> [bastion\_instance\_types](#input\_bastion\_instance\_types) | Bastion instance types used for spot instances. | `list(string)` | <pre>[<br>  "t4g.nano",<br>  "t4g.micro",<br>  "t4g.small"<br>]</pre> | no |
-| <a name="input_delete_on_termination"></a> [delete\_on\_termination](#input\_delete\_on\_termination) | Whether the volume should be destroyed on instance termination. | `bool` | `true` | no |
+| <a name="input_block_device_mappings"></a> [block\_device\_mappings](#input\_block\_device\_mappings) | Specify volumes to attach to the instance besides the volumes specified by the AMI | <pre>list(object({<br>    device_name  = string<br>    no_device    = optional(string)<br>    virtual_name = optional(string)<br>    ebs = optional(object({<br>      delete_on_termination = optional(bool, true)<br>      encrypted             = optional(bool, true)<br>      iops                  = optional(number)<br>      kms_key_id            = optional(string)<br>      snapshot_id           = optional(string)<br>      volume_size           = optional(number)<br>      volume_type           = optional(string)<br>      throughput            = optional(number)<br>    }))<br>  }))</pre> | `[]` | no |
 | <a name="input_desired_capacity"></a> [desired\_capacity](#input\_desired\_capacity) | Auto Scalling Group value for desired capacity of bastion hosts. | `number` | `1` | no |
-| <a name="input_device_name"></a> [device\_name](#input\_device\_name) | The name of the device to mount. | `string` | `"/dev/xvda"` | no |
+| <a name="input_ebs_optimized"></a> [ebs\_optimized](#input\_ebs\_optimized) | If true, the launched EC2 instance will be EBS-optimized | `bool` | `null` | no |
 | <a name="input_egress_cidr_blocks"></a> [egress\_cidr\_blocks](#input\_egress\_cidr\_blocks) | List of CIDR ranges to allow outbound traffic at security group level. Defaults to 0.0.0.0/0 | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_egress_ipv6_cidr_blocks"></a> [egress\_ipv6\_cidr\_blocks](#input\_egress\_ipv6\_cidr\_blocks) | List of IPv6 CIDR ranges to allow outbound traffic at security group level. Defaults to ::/0 | `list(string)` | <pre>[<br>  "::/0"<br>]</pre> | no |
 | <a name="input_enable_asg_scale_down"></a> [enable\_asg\_scale\_down](#input\_enable\_asg\_scale\_down) | n/a | `bool` | `false` | no |
 | <a name="input_enable_asg_scale_up"></a> [enable\_asg\_scale\_up](#input\_enable\_asg\_scale\_up) | n/a | `bool` | `false` | no |
-| <a name="input_encrypted"></a> [encrypted](#input\_encrypted) | Enables EBS encryption on the volume. | `bool` | `true` | no |
 | <a name="input_hosted_zone_id"></a> [hosted\_zone\_id](#input\_hosted\_zone\_id) | Hosted zone id where A record will be added for bastion host/s. | `string` | `""` | no |
 | <a name="input_ingress_cidr_blocks"></a> [ingress\_cidr\_blocks](#input\_ingress\_cidr\_blocks) | List of CIDR ranges to allow ssh access at security group level. Defaults to 0.0.0.0/0 | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_ingress_ipv6_cidr_blocks"></a> [ingress\_ipv6\_cidr\_blocks](#input\_ingress\_ipv6\_cidr\_blocks) | List of IPv6 CIDR ranges to allow ssh access at security group level. Defaults to ::/0 | `list(string)` | <pre>[<br>  "::/0"<br>]</pre> | no |
@@ -117,8 +116,6 @@ No modules.
 | <a name="input_termination_policies"></a> [termination\_policies](#input\_termination\_policies) | A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, OldestLaunchTemplate, AllocationStrategy. | `list(string)` | <pre>[<br>  "OldestInstance"<br>]</pre> | no |
 | <a name="input_time_zone"></a> [time\_zone](#input\_time\_zone) | Used for ASG Scale Up/Down. Valid values are the canonical names of the IANA time zones (such as Etc/GMT+9 or London/Europe) | `string` | `"Etc/UTC"` | no |
 | <a name="input_userdata_file_content"></a> [userdata\_file\_content](#input\_userdata\_file\_content) | The user data to provide when launching the instance. | `string` | `""` | no |
-| <a name="input_volume_size"></a> [volume\_size](#input\_volume\_size) | The size of the volume in gigabytes. | `number` | `20` | no |
-| <a name="input_volume_type"></a> [volume\_type](#input\_volume\_type) | The volume type. Can be one of standard, 'gp2', 'gp3', 'io1', 'io2', 'sc1' or 'st1'. | `string` | `"gp3"` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | VPC ID where bastion hosts and security groups will be created. | `string` | n/a | yes |
 
 ## Outputs

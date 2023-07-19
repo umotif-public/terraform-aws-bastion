@@ -1,0 +1,76 @@
+provider "aws" {
+  region = "eu-west-1"
+}
+
+#####
+# VPC and subnets
+#####
+data "aws_vpc" "default" {
+  default = true
+}
+
+data "aws_subnets" "all" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
+  }
+}
+
+#####
+# Bastion Host
+#####
+module "bastion" {
+  source = "../../"
+
+  name_prefix = "ebs-example"
+
+  vpc_id         = data.aws_vpc.default.id
+  public_subnets = flatten([data.aws_subnets.all.ids])
+
+  hosted_zone_id = "Z1IY32BQNIYX17"
+  ssh_key_name   = "eks-test"
+
+  enable_asg_scale_down = true
+  enable_asg_scale_up   = true
+
+  block_device_mappings = [
+    {
+      device_name = "/dev/xvda"
+      ebs = {
+        delete_on_termination = true
+        encrypted             = true
+        volume_type           = "gp3"
+        iops                  = 5000
+      }
+    },
+    {
+      device_name = "/dev/xvdb"
+      ebs = {
+        delete_on_termination = true
+        encrypted             = true
+        volume_type           = "io2"
+        volume_size           = 8
+      }
+    }
+  ]
+
+  ebs_optimized = true
+
+  userdata_file_content = templatefile("./custom-userdata.sh", {}) # if you want to use default one, simply remove this line
+
+  tags = {
+    Name        = "Test"
+    Environment = "tst"
+    Terraform   = "true"
+  }
+
+  tag_specifications = [
+    "instance",
+    "volume",
+    "network-interface",
+  ]
+}
+
+output "aws_ami" {
+  value = module.bastion.aws_ami
+}
