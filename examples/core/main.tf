@@ -33,9 +33,17 @@ module "bastion" {
   enable_asg_scale_down = true
   enable_asg_scale_up   = true
 
-  delete_on_termination = true
-  volume_size           = 10
-  encrypted             = true
+  block_device_mappings = [
+    {
+      device_name = "/dev/xvda"
+      ebs = {
+        delete_on_termination = true
+        volume_size           = 10
+        encrypted             = true
+        volume_type           = "gp3"
+      }
+    }
+  ]
 
   userdata_file_content = templatefile("./custom-userdata.sh", {}) # if you want to use default one, simply remove this line
 

@@ -7,6 +7,18 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="2.6.1"></a>
+## [2.6.1] - 2023-08-07
+
+- Fixes README example to use public_subnets ([#25](https://github.com/umotif-public/terraform-aws-bastion/issues/25))
+
+
+<a name="2.6.0"></a>
+## [2.6.0] - 2023-07-19
+
+- Added new ebs features ([#24](https://github.com/umotif-public/terraform-aws-bastion/issues/24))
+
+
 <a name="2.5.0"></a>
 ## [2.5.0] - 2023-07-17
 
@@ -155,7 +167,9 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.5.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.6.1...HEAD
+[2.6.1]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.6.0...2.6.1
+[2.6.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.5.0...2.6.0
 [2.5.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.3...2.5.0
 [2.4.3]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.2...2.4.3
 [2.4.2]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.1...2.4.2
