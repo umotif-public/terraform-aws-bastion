@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- DEVOPS-3503 Added options for allocation strategy
+- DEVOPS-3503 Added options for allocation strategy
+
+
+<a name="2.7.0"></a>
+## [2.7.0] - 2025-10-15
+
+- DEVOPS-3240 AWS Provider 6.0 compatibility ([#27](https://github.com/umotif-public/terraform-aws-bastion/issues/27))
+
+
+<a name="chore/DEVOPS-3240-001"></a>
+## [chore/DEVOPS-3240-001] - 2025-08-08
+
+- DEVOPS-3240 AWS Provider 6.0 compatibility
 
 
 <a name="2.6.1"></a>
@@ -167,7 +181,9 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.6.1...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.7.0...HEAD
+[2.7.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/chore/DEVOPS-3240-001...2.7.0
+[chore/DEVOPS-3240-001]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.6.1...chore/DEVOPS-3240-001
 [2.6.1]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.6.0...2.6.1
 [2.6.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.5.0...2.6.0
 [2.5.0]: https://github.com/umotif-public/terraform-aws-bastion/compare/2.4.3...2.5.0

@@ -206,3 +206,25 @@ variable "ebs_optimized" {
   description = "If true, the launched EC2 instance will be EBS-optimized"
   default     = null
 }
+
+variable "capacity_rebalance" {
+  type        = bool
+  description = "Indicates whether capacity rebalance is enabled. Otherwise, capacity rebalance is disabled."
+  default     = false
+}
+
+variable "spot_allocation_strategy" {
+  type        = string
+  description = "How to allocate capacity across the Spot pools. Valid values: lowest-price, diversified, price-capacity-optimized, capacity-optimized-prioritized."
+  default     = "lowest-price"
+
+  validation {
+    condition = contains([
+      "lowest-price",
+      "diversified",
+      "capacity-optimized",
+      "capacity-optimized-prioritized"
+    ], var.spot_allocation_strategy)
+    error_message = "Invalid spot allocation strategy. Must be one of: lowest-price, diversified, capacity-optimized, capacity-optimized-prioritized."
+  }
+}

@@ -66,6 +66,7 @@ resource "aws_autoscaling_group" "bastion" {
   max_size            = var.max_size
   min_size            = var.min_size
   vpc_zone_identifier = var.public_subnets
+  capacity_rebalance  = var.capacity_rebalance
 
   force_delete         = true
   termination_policies = var.termination_policies
@@ -74,6 +75,8 @@ resource "aws_autoscaling_group" "bastion" {
     instances_distribution {
       on_demand_percentage_above_base_capacity = 0
       on_demand_base_capacity                  = var.on_demand_base_capacity
+      spot_allocation_strategy                 = var.spot_allocation_strategy
+      spot_instance_pools                      = 0
     }
 
     launch_template {
