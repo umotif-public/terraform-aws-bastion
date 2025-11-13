@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- DEVOPS-3503 Added options for allocation strategy
+- DEVOPS-3503 Added options for allocation strategy
 
 
 <a name="2.7.0"></a>
